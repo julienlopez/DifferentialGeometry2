@@ -26,3 +26,13 @@ bool operator==(const Product& s1, const Product& s2)
 {
     return areEqual(s1.left, s2.left) && areEqual(s1.right, s2.right);
 }
+
+bool operator==(const Cos& c1, const Cos& c2)
+{
+    return areEqual(c1.expr, c2.expr);
+}
+
+bool operator==(const Sin& s1, const Sin& s2)
+{
+    return areEqual(s1.expr, s2.expr);
+}

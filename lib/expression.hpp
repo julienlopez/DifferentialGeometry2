@@ -32,9 +32,12 @@ bool operator==(const Variable& v1, const Variable& v2);
 
 struct Sum;
 struct Product;
+struct Cos;
+struct Sin;
 
 using Expression
-    = boost::variant<Constant, Value, Variable, boost::recursive_wrapper<Sum>, boost::recursive_wrapper<Product>>;
+    = boost::variant<Constant, Value, Variable, boost::recursive_wrapper<Sum>, boost::recursive_wrapper<Product>,
+                     boost::recursive_wrapper<Cos>, boost::recursive_wrapper<Sin>>;
 
 struct Sum
 {
@@ -51,3 +54,17 @@ struct Product
 };
 
 bool operator==(const Product& s1, const Product& s2);
+
+struct Cos
+{
+    Expression expr;
+};
+
+bool operator==(const Cos& c1, const Cos& c2);
+
+struct Sin
+{
+    Expression expr;
+};
+
+bool operator==(const Sin& s1, const Sin& s2);
