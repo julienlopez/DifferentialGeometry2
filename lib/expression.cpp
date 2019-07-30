@@ -21,3 +21,8 @@ bool operator==(const Sum& s1, const Sum& s2)
 {
     return areEqual(s1.left, s2.left) && areEqual(s1.right, s2.right);
 }
+
+bool operator==(const Product& s1, const Product& s2)
+{
+    return areEqual(s1.left, s2.left) && areEqual(s1.right, s2.right);
+}

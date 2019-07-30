@@ -31,8 +31,10 @@ bool operator==(const Variable& v1, const Variable& v2);
 // };
 
 struct Sum;
+struct Product;
 
-using Expression = boost::variant<Constant, Value, Variable, boost::recursive_wrapper<Sum>>;
+using Expression
+    = boost::variant<Constant, Value, Variable, boost::recursive_wrapper<Sum>, boost::recursive_wrapper<Product>>;
 
 struct Sum
 {
@@ -41,3 +43,11 @@ struct Sum
 };
 
 bool operator==(const Sum& s1, const Sum& s2);
+
+struct Product
+{
+    Expression left;
+    Expression right;
+};
+
+bool operator==(const Product& s1, const Product& s2);
