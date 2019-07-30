@@ -12,4 +12,11 @@ TEST_CASE("Derivative")
         const auto d = boost::apply_visitor(Derivative{L"x"}, exp);
         CHECK(areEqual(d, Value{0.}));
     }
+
+    SECTION("deriving a value gives zero")
+    {
+        Expression exp(Value{25});
+        const auto d = boost::apply_visitor(Derivative{L"x"}, exp);
+        CHECK(areEqual(d, Value{0.}));
+    }
 }

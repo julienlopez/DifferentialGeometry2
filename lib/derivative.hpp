@@ -18,7 +18,9 @@ struct Derivative : public boost::static_visitor<Expression>
         return {};
     }
 
-    Expression operator()(const Constant cst) const;
+    Expression operator()(const Constant) const;
+
+    Expression operator()(const Value) const;
 
     std::wstring m_variable_name;
 };
