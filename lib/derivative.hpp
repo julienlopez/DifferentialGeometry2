@@ -3,9 +3,14 @@
 #include "expression.hpp"
 
 #include <stdexcept>
+#include <string>
 
 struct Derivative : public boost::static_visitor<Expression>
 {
+    Derivative(std::wstring variable_name)
+        : m_variable_name(std::move(variable_name))
+    {
+    }
 
     template <class T> Expression operator()(const T& t) const
     {
@@ -14,4 +19,6 @@ struct Derivative : public boost::static_visitor<Expression>
     }
 
     Expression operator()(const Constant cst) const;
+
+    std::wstring m_variable_name;
 };

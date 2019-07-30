@@ -9,7 +9,7 @@ TEST_CASE("Derivative")
     SECTION("deriving a constant gives zero")
     {
         Expression exp(Constant{L"R"});
-        const auto d = boost::apply_visitor(Derivative{}, exp);
+        const auto d = boost::apply_visitor(Derivative{L"x"}, exp);
         CHECK(areEqual(d, Value{0.}));
     }
 }
