@@ -24,5 +24,7 @@ struct Derivative : public boost::static_visitor<Expression>
 
     Expression operator()(const Variable) const;
 
+    Expression operator()(Sum) const;
+
     std::wstring m_variable_name;
 };

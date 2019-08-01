@@ -34,3 +34,11 @@ TEST_CASE("Simple Derivative")
         CHECK(areEqual(d, Value{0.}));
     }
 }
+
+TEST_CASE("Sum Derivative")
+{
+    Expression exp{Sum{{Variable{L"x"}, Variable{L"y"}}}};
+    CHECK(areEqual(boost::apply_visitor(Derivative(L"x"), exp), Value{1.}));
+    CHECK(areEqual(boost::apply_visitor(Derivative(L"y"), exp), Value{1.}));
+    CHECK(areEqual(boost::apply_visitor(Derivative(L"z"), exp), Value{0.}));
+}
