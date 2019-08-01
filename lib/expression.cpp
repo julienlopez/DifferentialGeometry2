@@ -19,12 +19,12 @@ bool operator==(const Variable& v1, const Variable& v2)
 
 bool operator==(const Sum& s1, const Sum& s2)
 {
-    return areEqual(s1.left, s2.left) && areEqual(s1.right, s2.right);
+    return std::equal(begin(s1.operands), end(s1.operands), begin(s2.operands), end(s2.operands));
 }
 
 bool operator==(const Product& s1, const Product& s2)
 {
-    return areEqual(s1.left, s2.left) && areEqual(s1.right, s2.right);
+    return std::equal(begin(s1.operands), end(s1.operands), begin(s2.operands), end(s2.operands));
 }
 
 bool operator==(const Cos& c1, const Cos& c2)

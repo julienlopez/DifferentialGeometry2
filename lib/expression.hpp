@@ -1,5 +1,7 @@
 #pragma once
 
+#include <vector>
+
 #include <boost/variant/recursive_variant.hpp>
 
 struct Constant
@@ -41,16 +43,14 @@ using Expression
 
 struct Sum
 {
-    Expression left;
-    Expression right;
+    std::vector<Expression> operands;
 };
 
 bool operator==(const Sum& s1, const Sum& s2);
 
 struct Product
 {
-    Expression left;
-    Expression right;
+    std::vector<Expression> operands;
 };
 
 bool operator==(const Product& s1, const Product& s2);
