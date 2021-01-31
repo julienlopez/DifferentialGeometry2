@@ -10,7 +10,7 @@ endif()
 
 include(${CMAKE_BINARY_DIR}/conan.cmake)
 conan_cmake_run(SETTINGS cppstd=17)
-conan_cmake_run(SETTINGS settings.compiler.libcxx=libstdc++)
+conan_cmake_run(SETTINGS compiler.libcxx=libstdc++)
 conan_cmake_run(REQUIRES boost/1.71.0@conan/stable BASIC_SETUP BUILD missing)
 conan_cmake_run(REQUIRES catch2/2.13.3 BASIC_SETUP CMAKE_TARGETS BUILD missing)
 
