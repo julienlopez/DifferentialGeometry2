@@ -197,3 +197,25 @@ jobs:
           message("::error::${test_results}")
           message(FATAL_ERROR "Running tests failed!")
         endif()
+    - name: Run test coverage
+      shell: cmake -P {0}
+      run: |
+        if ("${{ runner.os }}" STREQUAL "Linux")
+            execute_process(apt install lcov)
+            execute_process(lcov --directory lib --directory build --capture --no-external --output-file coverage.info)
+            execute_process(lcov --remove coverage.info '/usr/*' --output-file coverage.info)
+            execute_process(lcov --remove coverage.info '3rd_party/*' --output-file coverage.info)
+            execute_process(lcov --list coverage.info)
+        endif()
+    - name: Upload coverage to Codecov
+      uses: codecov/codecov-action@v1
+      with:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        files: ./coverage.info
+        # directory: ./coverage/reports/
+        flags: unittests
+        # env_vars: OS,PYTHON
+        name: codecov-umbrella
+        fail_ci_if_error: true
+        path_to_write_report: ./codecov_report.txt
+        verbose: true
