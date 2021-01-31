@@ -1,5 +1,6 @@
 #include "derivative.hpp"
 
+#include <algorithm>
 #include <functional>
 
 Expression Derivative::operator()(const Constant) const
